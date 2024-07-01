@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Growth Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1, h2, label, p {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quadratic Growth of Comparisons with No. of Pairs</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const pairs = [10, 100, 1000, 10000, 100000, 1000000];
+        const comparisons = [90, 9900, 999000, 99990000, 9999900000, 999999000000];
+
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: pairs,
+                datasets: [{
+                    label: 'Number of Comparisons',
+                    data: comparisons,
+                    borderColor: 'blue',
+                    fill: false,
+                    lineTension: 0,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'logarithmic',
+                        title: {
+                            display: true,
+                            text: 'Number of Pairs'
+                        }
+                    },
+                    y: {
+                        type: 'logarithmic',
+                        title: {
+                            display: true,
+                            text: 'Number of Comparisons'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Quadratic Growth of Comparisons with Number of Pairs'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
